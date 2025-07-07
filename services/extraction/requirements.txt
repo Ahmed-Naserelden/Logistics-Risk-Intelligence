@@ -4,6 +4,7 @@ pandas
 requests
 beautifulsoup4
 
+paramiko
 
 python-dotenv
 

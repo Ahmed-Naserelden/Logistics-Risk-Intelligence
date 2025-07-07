@@ -1,7 +1,5 @@
 
-FROM python:latest
-
-RUN apt update && apt install -y cron && apt install -y nano
+FROM an2071497/logistic_risk_base_img
 
 
 WORKDIR /extraction
@@ -9,5 +7,9 @@ WORKDIR /extraction
 COPY . .
 
 RUN pip install -r requirements.txt
+
+RUN chown -R orca:orca /extraction
+
+USER orca
 
 ENTRYPOINT [ "./entrypoint.sh"]

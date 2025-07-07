@@ -336,5 +336,8 @@ if __name__ == '__main__':
             
     print("Count: ", len(list_of_invalid))
     print(list_of_invalid)
-    df.toPandasDataFrame().to_csv(f"/extraction/data/vessels/{datetime.now().strftime('%Y-%m-%d')}.csv")
+
+    csv_temp_output_path = f"/extraction/data/vessels/{datetime.now().strftime('%Y-%m-%d')}.csv"
+    df.toPandasDataFrame().to_csv(csv_temp_output_path)
     print(df.toPandasDataFrame().head())
+    

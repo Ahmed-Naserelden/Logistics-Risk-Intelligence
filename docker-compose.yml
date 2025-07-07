@@ -146,6 +146,7 @@ services:
     hostname: extraction-layer
     volumes:
       - ./services/extraction:/extraction/
+      - shared_storage:/extraction/data
     networks:
       - bd-casestudy-nw
     entrypoint: /extraction/entrypoint.sh
@@ -154,7 +155,26 @@ services:
     env_file:
       - ./services/extraction/.env
 
+  shared_server:
+    build:
+      context: services/shared/
+      dockerfile: Dockerfile
+    hostname: shared-layer
+    volumes:
+      - ./services/shared:/shared/
+      - shared_storage:/shared/bucket
+    entrypoint: /shared/entrypoint.sh
+    depends_on:
+      - extraction_server
+    networks:
+      - bd-casestudy-nw
+
 networks:
   bd-casestudy-nw:
     name: bd-casestudy-nw
     driver: bridge
+
+volumes:
+
+  pgvol:
+  shared_storage:
