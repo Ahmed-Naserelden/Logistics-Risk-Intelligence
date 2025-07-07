@@ -1,0 +1,62 @@
+,name,type,year_built,gross_tonnage,deadweight,length(m),beam(m),detail_link,departure_date,last_port_country,last_port_name,arrival_date,destination_port_country,destination_port_name,destination_port_lat,destination_port_lon,reported_status,report_date
+0,ATHINEA,Tanker,2006,60007,,248,43,,"Jun 27, 01:24 UTC (10 days ago)",Egypt,As Suways (Suez) Anch.,"Jul 5, 02:00",,RAS GHARIB,-,-,-,2025-07-07
+1,ETC RAMSIS,Tanker,2003,59574,,245,41,,"Jun 29, 07:24 UTC (8 days ago)",Egypt,As Suways (Suez) Anch.,"Jul 3, 20:00",Egypt,Wadi Feiran,28.7591N, 33.2242E,-,2025-07-07
+2,ALEXIA 3,-,1999,56841,,248.00,43.04,,-,-,-,-,-,-,-,-,-,2025-07-07
+3,CHRIS,Tanker (HAZ-A),2004,49838,,239,42,,"Jul 6, 21:11 UTC (3 hours ago)",Egypt,As Suways (Suez) Anch.,"Jul 7, 09:00
+(in 9 hours)",,ZET_BAY EG,-,-,Under way,2025-07-07
+4,TAAWON 11,-,1982,643,,60.13,10.19,,-,-,-,-,-,-,-,-,-,2025-07-07
+5,WADI ALMOLOUK,Cargo ship,2020,44732,,229,32,,"Jun 30, 21:54 UTC (6 days ago)",Taiwan,Taichung Anch.,"Jun 30, 22:42 UTC
+ARRIVED",Taiwan,Taichung,24.2869N, 120.5066E,Moored,2025-07-07
+6,WADI ALARISH,Cargo ship,2024,44560,,229,32,,"Jun 25, 21:13 UTC (11 days ago)",United Arab Emirates (UAE),Al Fujayrah Anch.,"Jul 22, 15:00
+(in 16 days)",Brazil,Paranagua,25.4991S, 48.5188W,-,2025-07-07
+7,WADI ALMALEKAT,Cargo ship,2017,44069,,229,33,,"Jul 2, 02:58 UTC (5 days ago)",Hong Kong,Hong Kong Anch.,"Jul 1, 16:00",,CNMCH,-,-,Under way,2025-07-07
+8,WADI TIBA,Cargo ship,2011,43736,,229,32,,"Jul 2, 09:33 UTC (5 days ago)",Spain,Escombreras,"Jul 2, 04:00",Spain,Cartagena,37.592N, 0.9819W,Moored,2025-07-07
+9,WADI ALKARM,Cargo ship,2011,43736,,229,32,,"Jul 4, 02:17 UTC (3 days ago)",Spain,Tarragona,"Jul 12, 18:00
+(in 6 days)",Turkey,Zonguldak,41.4647N, 31.775E,Under way,2025-07-07
+10,WADI SAFAGA,-,2010,43736,,228.90,32.29,,-,-,-,-,-,-,-,-,-,2025-07-07
+11,WADI ALYARMOUK,Cargo ship,2010,43726,,229,32,,"Jun 28, 20:30 UTC (8 days ago)",Portugal,Banatica,"Jul 5, 09:56 UTC
+ARRIVED",Italy,Ravenna Anch.,44.4777N, 12.2604E,At anchor,2025-07-07
+12,ESNA,Cargo ship,1998,38464,,223,32,,"Jun 20, 22:43 UTC (16 days ago)",United States (USA),Mobile,"Jul 17, 12:00
+(in 10 days)",Turkey,Isdemir,36.7336N, 36.1813E,-,2025-07-07
+13,EDFU,Cargo ship,1997,38464,,224,33,,"Jul 6, 17:42 UTC (7 hours ago)",Spain,Las Palmas,"Jul 16, 22:00
+(in 10 days)",Turkey,Nemrut,38.7768N, 26.909E,Under way,2025-07-07
+14,WADI ALKARNAK,Cargo ship,1997,37028,,225,33,,"Jul 3, 19:17 UTC (3 days ago)",France,La Pallice,"Jul 13, 20:00
+(in 7 days)",Egypt,Alexandria,31.166N, 29.8385E,Under way,2025-07-07
+15,WADI ALARAB,Cargo ship,1995,37027,,224,32,,"Jun 30, 19:35 UTC (6 days ago)",France,Rouen,"Jul 3, 04:00",France,La Pallice,46.1509N, 1.239W,At anchor,2025-07-07
+16,WADI ALRAYAN,Cargo ship,2000,34750,,215,32,,"Jul 4, 21:34 UTC (2 days ago)",Djibouti,Djibouti,"Jul 7, 04:00
+(in 4 hours)",Saudi Arabia,Jeddah,21.4614N, 39.116E,Under way,2025-07-07
+17,WADI ALBOSTAN,Cargo ship,2011,33234,,190,32,,"Jul 5, 19:09 UTC (1 day ago)",Singapore,Singapore Anch. 4,"Jul 15, 07:00
+(in 8 days)",India,Hazira,21.0666N, 72.6159E,-,2025-07-07
+18,WADI FERAN,Cargo ship,2011,33234,,189,32,,"Jun 30, 19:41 UTC (6 days ago)",India,Cochin Anch.,"Jul 6, 10:00",Bangladesh,Chittagong,22.21N, 91.8E,-,2025-07-07
+19,SAFEEN PRESTIGE,Cargo ship,2013,18252,,175,27,,"Jul 3, 17:49 UTC (3 days ago)",Egypt,Port Said East,"Jul 8, 06:00
+(in 1 day)",Libya,Misurata,32.367N, 15.2328E,Under way,2025-07-07
+20,CAPT. KATTELMANN,Cargo ship,2006,15995,,170,15,,"Jul 5, 08:12 UTC (2 days ago)",Spain,Barcelona,"Jul 10, 04:00
+(in 3 days)",Egypt,El Dekheila,31.1502N, 29.8059E,Under way,2025-07-07
+21,EGY CROWN,Cargo ship,2000,14241,,140,50,,"Jun 30, 04:26 UTC (7 days ago)",Bulgaria,Varna Anch.,"Jun 30, 06:24 UTC
+ARRIVED",Bulgaria,Varna,43.1902N, 27.939E,Moored,2025-07-07
+22,EGY FUTURE,Cargo ship,1998,13977,,159,24,,"Mar 7, 01:56 UTC (122 days ago)",Egypt,Alexandria,-,,Destination not available,-,-,-,2025-07-07
+23,AL HURREYA,Cargo ship,2005,13529,,140,24,,"Jul 5, 09:20 UTC (2 days ago)",Egypt,As Suways (Suez) Anch.,"Jul 6, 13:00",,SUEZ-SAFAGA,-,-,-,2025-07-07
+24,AL HURREYA 2,Cargo ship,2007,13529,,140,24,,"Jul 5, 20:59 UTC (1 day ago)",Saudi Arabia,Duuba,"Jul 6, 10:00",,SAFAGA EGY,-,-,-,2025-07-07
+25,ELREEDY STAR,Cargo ship,1998,13066,,153,24,,"Jul 5, 11:59 UTC (2 days ago)",Sudan,Port Sudan,"Jul 6, 12:00",Saudi Arabia,Jeddah,21.4614N, 39.116E,Under way,2025-07-07
+26,PAN GG,Cargo ship,2002,10308,,149,22,,"Jul 6, 20:07 UTC (4 hours ago)",Egypt,El Dekheila,"Jul 6, 20:33 UTC
+ARRIVED",Egypt,Alexandria,31.166N, 29.8385E,Moored,2025-07-07
+27,EGY SKY,Cargo ship (HAZ-A),2007,10308,,150,22,,"Jul 6, 22:05 UTC (2 hours ago)",Egypt,Port Said East,"Jul 6, 20:00",,EGPSE,-,-,Moored,2025-07-07
+28,LOTUS,Cargo ship,1999,8443,,135,20,,"Jul 6, 15:21 UTC (9 hours ago)",Egypt,Port Said East,"Jul 6, 20:00",,EGPSE,-,-,Moored,2025-07-07
+29,BRIDGE,Cargo ship,1989,7363,,111,20,,"Jun 25, 04:57 UTC (12 days ago)",Saudi Arabia,Jeddah Anchorage,"Jun 30, 09:45",,JEDDAH<>SAWAKIN,-,-,-,2025-07-07
+30,AL SHAYMAA,-,1981,5744,,128.00,18.00,,-,-,-,-,-,-,-,-,-,2025-07-07
+31,MERSA ALAM,-,2000,4414,,100.60,17.80,,-,-,-,-,-,-,-,-,-,2025-07-07
+32,RAS EL KHAIMA,-,1970,499,,76.41,13.42,,-,-,-,-,-,-,-,-,-,2025-07-07
+33,SHOROK 4,-,2012,200,,30.00,-,,-,-,-,-,-,-,-,-,-,2025-07-07
+34,ELMALEK KHALED,-,1970,499,,76.38,13.42,,-,-,-,-,-,-,-,-,-,2025-07-07
+35,AL HURREYA 3,-,2024,20437,,174.00,26.00,,-,-,-,-,-,-,-,-,-,2025-07-07
+36,SHOROK 1,-,2012,200,,30.00,-,,-,-,-,-,-,-,-,-,-,2025-07-07
+37,SHOROK 3,-,2012,200,,30.00,-,,-,-,-,-,-,-,-,-,-,2025-07-07
+38,SAKKR 2,-,1981,100,,24.36,4.70,,-,-,-,-,-,-,-,-,-,2025-07-07
+39,-,-,-,-,-,-,-,,-,-,-,-,-,-,-,-,-,2025-07-07
+40,-,-,-,-,-,-,-,,-,-,-,-,-,-,-,-,-,2025-07-07
+41,-,-,-,-,-,-,-,,-,-,-,-,-,-,-,-,-,2025-07-07
+42,-,-,-,-,-,-,-,,-,-,-,-,-,-,-,-,-,2025-07-07
+43,EL AABED,-,1973,1981,,79.91,14.33,,-,-,-,-,-,-,-,-,-,2025-07-07
+44,SHOROK 2,-,2012,200,,30.00,-,,-,-,-,-,-,-,-,-,-,2025-07-07
+45,NOUR,-,1969,110,,32.82,-,,-,-,-,-,-,-,-,-,-,2025-07-07
+46,SUEZ FLOWER,-,1970,1179,,72.70,11.54,,-,-,-,-,-,-,-,-,-,2025-07-07
