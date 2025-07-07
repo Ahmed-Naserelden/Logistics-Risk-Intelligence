@@ -6,6 +6,7 @@ class Dataframe:
     def __init__(self, data: dict = None):
         self.data = {
             "name": [],
+            "url": [],
             "type": [],
             "year_built": [],
             "gross_tonnage": [],

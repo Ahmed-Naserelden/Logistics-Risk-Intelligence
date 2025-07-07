@@ -20,15 +20,22 @@ class Record:
         return '-'
 
     def getLengthAndBeem(self) -> tuple[int, int]:
+        
+        if 'Size(m)' in self.record.keys():
+            values = self.record['Size(m)']
+            if '/' in values:
+                v_list = values.split('/')
+                return int(v_list[0]), int(v_list[-1])
+
         if 'Length / Beam' in self.record.keys():
             values = self.record['Length / Beam']
+            if '/' in values:
+                # values is a string like this: '229 / 32 m'
+                v_list = values.split('/')
 
-            # values is a string like this: '229 / 32 m'
-            v_list = values.split('/')
+                v_list[-1] = v_list[-1][:v_list[-1].find('m')]
 
-            v_list[-1] = v_list[-1][:v_list[-1].find('m')]
-
-            return int(v_list[0]), int(v_list[-1]) 
+                return int(v_list[0]), int(v_list[-1]) 
         
         length, beam = '-', '-'
 
@@ -46,7 +53,9 @@ class Record:
         return {'beam(m)': self.getLengthAndBeem()[-1]}
     
     def getName(self) -> dict:
-        name = self.getIfInRecord('Vessel Name')
+        name = self.getIfInRecord('vessel_name')
+        if name == '-':
+            name = self.getIfInRecord('Vessel Name')
         return {"name": name}
 
     def getType(self) -> dict:
@@ -57,7 +66,7 @@ class Record:
         flage = self.getIfInRecord('Flage')
         if flage == '-':
             flage = self.getIfInRecord('AIS Flag')
-        return {"flage": flage}
+        return {"flage": 'Egypt'}
 
     def getIMO(self) -> dict:
         imo = self.getIfInRecord('IMO number')
@@ -70,11 +79,15 @@ class Record:
         return {"reported_status": reported_status}
 
     def getGrossTonnage(self) -> dict:
-        gross_tonnage = self.getIfInRecord('Gross Tonnage')
+        gross_tonnage = self.getIfInRecord('GT')
+        if gross_tonnage == '-':
+            gross_tonnage = self.getIfInRecord('Gross Tonnage')
         return {"gross_tonnage": gross_tonnage}
 
     def getDeadWeight(self) -> dict:
-        deadweight = self.getIfInRecord('Deadweight(t)')
+        deadweight = self.getIfInRecord('DWT')
+        if deadweight == '-':
+            deadweight = self.getIfInRecord('Deadweight(t)')
         return {"deadweight": deadweight}
 
     def getLastPortCountry(self) -> dict:
@@ -82,7 +95,9 @@ class Record:
         return {"last_port_country": last_port_country}
 
     def getYearBuilt(self) -> dict:
-        year_built = self.getIfInRecord('Year of Build')
+        year_built = self.getIfInRecord('Built')
+        if year_built == '-':
+            year_built = self.getIfInRecord('Year of Build')
         return {"year_built": year_built}
 
     def getDestinationPortCountry(self) -> dict:
@@ -116,9 +131,12 @@ class Record:
     def getDestinationPortLon(self) -> dict: 
         destination_port_lon = self.getIfInRecord('destination_port_lon')
         return {"destination_port_lon": destination_port_lon}
-    
+    def getVesselURL(self) -> dict:
+        url = self.getIfInRecord('Url')
+        return {'url': url}
     def redefineRecode(self) -> dict:
         new_record = {
+            **self.getVesselURL(),
             **self.getName(),
             **self.getType(),
             **self.getYearBuilt(),

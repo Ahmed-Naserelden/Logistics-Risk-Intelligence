@@ -7,7 +7,7 @@ from data_frame import Dataframe
 from record import Record
 from datetime import datetime
 from portscraper import PortsLocationsScraper
-
+import time
 class VesselURLSCrapper(Scrapper):
     """
     A class to scrape vessel URLs from a given URL.
@@ -51,9 +51,26 @@ class VesselURLSCrapper(Scrapper):
 
         rows = table.find_all('tr')[1:]  # Skip the header row
 
+        vessels_data = []
+
+
+        for row in rows:
+            tds = row.find_all('td')
+            data = {
+                "Url": tds[0].find('a').get('href'),
+                "vessel_name": tds[0].find('a').find('div', class_='slna').text.strip(),
+                "Built": tds[1].text.strip(),
+                "GT": tds[2].text.strip(),
+                "DWT": tds[3].text.strip(),
+                "Size(m)": tds[4].text.strip()
+            }
+
+            vessels_data.append(data)
+
+
         # Extract vessel URLs from the table rows
-        vessel_urls = [row.find('td').find('a').get('href') for row in rows]
-        return vessel_urls
+        # vessel_urls = [row.find('td').find('a').get('href') for row in rows]
+        return vessels_data
 
 
 def divide_page_into_sections(soup: BeautifulSoup, element_name: str, value: str) -> BeautifulSoup:
@@ -301,38 +318,43 @@ def doWork(base_url, endpoint):
 if __name__ == '__main__':
     base_url = "https://www.vesselfinder.com"
 
-    endpoints = ["vessels?type=601&flag=EG", "vessels?type=4&flag=EG"]
+    endpoints = ["vessels?type=6&flag=EG", "vessels?type=4&flag=EG"]
 
 
     df = Dataframe()
     list_of_invalid = []
 
     for endpoint in endpoints:
-        vessels_links = VesselURLSCrapper(base_url, endpoint).get_all_vessel_urls()
-        print(f"Number of Links: {len(vessels_links)}")
 
-        for _ in range(0, len(vessels_links)):
-
-            vessels_link = vessels_links[_]        
-            print(f"Now Scraping this, ", vessels_links[_])
+        data = VesselURLSCrapper(base_url, endpoint).get_all_vessel_urls()
+        
+        
+        for _ in range(0, len(data)):
+            current_data = data[_]
+            vessels_link = current_data['Url']        
+            print(f"Now Scraping this, ", vessels_link)
 
             vs = VesselScraper(base_url=base_url, endpoint=vessels_link)
             rs = vs.operate()
-
+            
+            current_data = {**current_data, **rs}
             # print all key, value data
             print("*"*100)
-            print(rs)
+            print(current_data)
             print("*"*100)
 
             # to select the needed data
-            record = Record(rs).redefineRecode()
+            record = Record(current_data).redefineRecode()
             print(record)
             print("="*100)
             df.addNewRecord(record)
 
             if record == {}:
-                list_of_invalid.append(vessels_links[_])
+                list_of_invalid.append(vessels_link)
+            # break
+            # time.sleep(5)
         # break
+
             
     print("Count: ", len(list_of_invalid))
     print(list_of_invalid)
