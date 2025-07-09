@@ -151,7 +151,8 @@ services:
       - bd-casestudy-nw
     entrypoint: /extraction/entrypoint.sh
     depends_on:
-      - postgres
+      debezium:
+        condition: service_healthy
     env_file:
       - ./services/extraction/.env
 
