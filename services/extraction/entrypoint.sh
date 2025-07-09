@@ -5,7 +5,9 @@ sudo service cron start
 
 sudo service ssh start
 
-# Run seismic events streaming listener
-/usr/local/bin/python3 /extraction/scripts/seismic_events/seismic_listener.py >> /extraction/logs/seismic_listener_wal.log
+if [ ! -d "/extraction/logs" ]; then
+  mkdir -p /extraction/logs
+fi
 
-tail -f /dev/null
+# Run seismic events streaming listener
+python3 "/extraction/scripts/seismic_events/seismic_listener.py" &>> "/extraction/logs/seismic_listener_wal.log"
