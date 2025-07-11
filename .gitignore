@@ -9,3 +9,10 @@
 **logs/
 
 **sftp-data/
+
+cluster_util_db_scripts/
+
+services/extraction/data/vessels/
+
+**.ipynb_checkpoints/
+
