@@ -169,10 +169,49 @@ services:
     networks:
       - bd-casestudy-nw
 
+  itvdelab:
+    image: itversity/itvdelab
+    hostname: itvdelab
+    ports:
+      - "9870:9870"
+      - "4040:4040"
+      - "8888:8888"
+      - "8078:8088"
+      - "9864:9864"
+      - "8042:8042"
+      - "18180:18080"
+      - "18181:18081"
+    volumes:
+      - ./services/spark:/home/itversity/spark
+      - ./services/hive:/home/itversity/hive
+
+    environment:
+      SHELL: /bin/bash
+    networks:
+      - itvdelabnw
+      - bd-casestudy-nw
+    depends_on:
+      - "cluster_util_db"
+      - bd-casestudy-nw
+
+  cluster_util_db:
+    image: postgres:13
+    ports:
+      - "6432:5432"
+    volumes:
+      - ./cluster_util_db_scripts:/docker-entrypoint-initdb.d
+    networks:
+      - itvdelabnw
+    environment:
+      POSTGRES_PASSWORD: itversity
+
 networks:
   bd-casestudy-nw:
     name: bd-casestudy-nw
     driver: bridge
+
+  itvdelabnw:
+    name: itvdelabnw
 
 volumes:
 
