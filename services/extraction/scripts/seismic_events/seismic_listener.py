@@ -26,10 +26,10 @@ DB_SETTINGS = {
 try:
     conn = psycopg2.connect(**DB_SETTINGS)
     cursor = conn.cursor()
-    print("✅ Connected to PostgreSQL database.")
-    logging.info("✅ Connected to PostgreSQL database.")
+    print("Connected to PostgreSQL database.")
+    logging.info(" Connected to PostgreSQL database.")
 except Exception:
-    logging.exception("❌ Could not connect to PostgreSQL.")
+    logging.exception(" Could not connect to PostgreSQL.")
     sys.exit(1)
 
 # Create table if not exists
@@ -53,6 +53,8 @@ def create_table():
         received_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     )
     """)
+    cursor.execute("ALTER TABLE public.seismic_events REPLICA IDENTITY FULL;")
+    conn.commit()
     cursor.execute("ALTER TABLE public.seismic_events REPLICA IDENTITY FULL;")
     conn.commit()
 
@@ -107,10 +109,10 @@ def process_event(message):
             ))
 
         conn.commit()
-        logging.info(f"✅ Processed {action} for UNID={unid}")
+        logging.info(f"Processed {action} for UNID={unid}")
 
     except Exception:
-        logging.exception("❌ Failed to process/insert message.")
+        logging.exception(" Failed to process/insert message.")
 
 # Read WebSocket stream
 @gen.coroutine
@@ -126,12 +128,12 @@ def listen(ws):
 @gen.coroutine
 def launch_client():
     try:
-        logging.info(f"🌐 Connecting to WebSocket: {SEISMIC_WS_URI}")
+        logging.info(f" Connecting to WebSocket: {SEISMIC_WS_URI}")
         ws = yield websocket_connect(SEISMIC_WS_URI, ping_interval=PING_INTERVAL)
     except Exception:
-        logging.exception("❌ WebSocket connection failed")
+        logging.exception("WebSocket connection failed")
     else:
-        logging.info("🟢 Listening for real-time seismic data...")
+        logging.info(" Listening for real-time seismic data...")
         yield listen(ws)
 
 # Start the loop
@@ -142,7 +144,7 @@ if __name__ == '__main__':
     try:
         loop.start()
     except KeyboardInterrupt:
-        logging.info("🛑 Keyboard interrupt. Shutting down.")
+        logging.info(" Keyboard interrupt. Shutting down.")
         loop.stop()
         cursor.close()
         conn.close()
