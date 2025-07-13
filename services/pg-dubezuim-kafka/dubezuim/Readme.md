@@ -39,9 +39,12 @@ curl -X POST http://debezium:8083/connectors \
       "table.include.list": "public.seismic_events",
       "topic.prefix": "maritime_logistics_server",
       "key.converter": "org.apache.kafka.connect.json.JsonConverter",
-      "value.converter": "org.apache.kafka.connect.json.JsonConverter"
+      "key.converter.schemas.enable": "false",
+      "value.converter": "org.apache.kafka.connect.json.JsonConverter",
+      "value.converter.schemas.enable": "false"
     }
-  }'
+  }
+'
 ```
 
 ---

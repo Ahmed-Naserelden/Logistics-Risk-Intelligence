@@ -11,7 +11,7 @@ sudo service ssh start
 # Check if a marker file exists to avoid duplicate connector creation
 if [ ! -f "~/conector_created" ]; then
 
-  curl -X POST http://debezium:8083/connectors \
+curl -X POST http://debezium:8083/connectors \
   -H "Content-Type: application/json" \
   -d '{
     "name": "seismic-events-connector",
@@ -29,10 +29,12 @@ if [ ! -f "~/conector_created" ]; then
       "table.include.list": "public.seismic_events",
       "topic.prefix": "maritime_logistics_server",
       "key.converter": "org.apache.kafka.connect.json.JsonConverter",
-      "value.converter": "org.apache.kafka.connect.json.JsonConverter"
+      "key.converter.schemas.enable": "false",
+      "value.converter": "org.apache.kafka.connect.json.JsonConverter",
+      "value.converter.schemas.enable": "false"
     }
-  }' && touch ~/conector_created
-  
+  }
+' && touch ~/conector_created
 fi
 
 # Ensure the logs directory exists for the listener logs

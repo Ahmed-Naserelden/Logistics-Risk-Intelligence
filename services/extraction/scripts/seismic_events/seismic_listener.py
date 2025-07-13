@@ -53,6 +53,7 @@ def create_table():
         received_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     )
     """)
+    cursor.execute("ALTER TABLE public.seismic_events REPLICA IDENTITY FULL;")
     conn.commit()
 
 create_table()

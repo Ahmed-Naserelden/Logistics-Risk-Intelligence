@@ -24,8 +24,10 @@ try:
             raise KafkaException(msg.error())
         else:
             cnt += 1
-            print("Count: ", cnt)
-            # print(f"Received message: {msg.value().decode('utf-8')} (key: {msg.key()})")
+            print(f"[Message {cnt}]", "#"*90)
+            print(f"Received message: {msg.value().decode('utf-8')} (key: {msg.key()})")
+            print(" " * (len(str(cnt)) + 10), "#"*90)
+            print()
 except KeyboardInterrupt:
     pass
 finally:
