@@ -9,3 +9,10 @@
 **logs/
 
 **sftp-data/
+
+**data/
+
+*.ipynb_checkpoints
+
+services/spark/.env
+
