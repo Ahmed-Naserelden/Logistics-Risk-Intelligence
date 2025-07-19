@@ -50,7 +50,9 @@ schema = StructType([
         StructField("mag", DoubleType(), True),
         StructField("magtype", StringType(), True),
         StructField("action", StringType(), True),
-        StructField("received_at", LongType(), True)
+        StructField("received_at", LongType(), True),
+        StructField("current_snowflake_pk", LongType(), True),
+        StructField("last_snowflake_pk", LongType(), True)
     ]), True),
     StructField("source", StructType([
         StructField("version", StringType(), True),
@@ -88,18 +90,7 @@ messages = df.selectExpr("CAST(value AS STRING) as message") \
 
 # Flatten the DataFrame
 flattened_df = messages.select(
-    col("before.unid").alias("bunid"),
-    col("before.source_id").alias("bsource_id"),
-    col("before.source_catalog").alias("bsource_catalog"),
-    col("before.flynn_region").alias("bflynn_region"),
-    col("before.lat").alias("blat"),
-    col("before.lon").alias("blon"),
-    col("before.depth").alias("bdepth"),
-    col("before.evtype").alias("bevtype"),
-    col("before.auth").alias("bauth"),
-    col("before.mag").alias("bmag"),
-    col("before.magtype").alias("bmagtype"),
-    col("before.action").alias("baction"),
+    col("after.current_snowflake_pk").alias("pk"),
     col("after.unid").alias("unid"),
     col("after.source_id").alias("source_id"),
     col("after.source_catalog").alias("source_catalog"),
@@ -118,7 +109,8 @@ flattened_df = messages.select(
     col("source.db").alias("source_db"),
     col("source.table").alias("source_table"),
     col("op").alias("operation"),
-    col("ts_ms").alias("kafka_ts_ms")
+    col("ts_ms").alias("kafka_ts_ms"),
+    col("after.last_snowflake_pk").alias("bpk"),
 )
 
 # Batch writer to Snowflake
@@ -141,7 +133,7 @@ def write_to_snowflake(batch_df, batch_id):
             "sfWarehouse": "COMPUTE_WH", 
             "sfDatabase": "SEISMIC_DB",
             "sfSchema": "BRONZE",
-            "dbtable": "earthquake_events3",
+            "dbtable": "EARTHQUAKE_EVENTS4",
             "sfStage": "INTERNAL_STAGE",                                 # Snowflake internal stage
             "sfFileFormat": "parquet",                                   # Use Parquet for staging
             
