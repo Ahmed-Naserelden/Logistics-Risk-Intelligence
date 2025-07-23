@@ -180,6 +180,7 @@ services:
       - "8042:8042"
       - "18180:18080"
       - "18181:18081"
+      - "10000:10000"
     volumes:
       - ./services/spark:/home/itversity/spark
       - ./services/hive:/home/itversity/hive
