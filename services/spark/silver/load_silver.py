@@ -5,7 +5,7 @@ from pyspark.sql.functions import (
 )
 from pyspark.sql.types import (
     StructType, StructField, StringType, 
-    IntegerType, DoubleType, TimestampType
+    IntegerType, DoubleType, TimestampType, DateType
 )
 import os
 from datetime import datetime
@@ -32,16 +32,16 @@ vessel_schema = StructType([
     StructField("length_m", DoubleType(), True),
     StructField("beam_m", DoubleType(), True),
     StructField("detail_link", StringType(), True),
-    StructField("departure_date", StringType(), True),
+    StructField("departure_date", TimestampType(), True),
     StructField("last_port_country", StringType(), True),
     StructField("last_port_name", StringType(), True),
-    StructField("arrival_date", StringType(), True),
+    StructField("arrival_date", TimestampType(), True),
     StructField("destination_port_country", StringType(), True),
     StructField("destination_port_name", StringType(), True),
     StructField("destination_port_lat", StringType(), True),
     StructField("destination_port_lon", StringType(), True),
     StructField("reported_status", StringType(), True),
-    StructField("report_date", StringType(), True),
+    StructField("report_date", TimestampType(), True),
     StructField("ingestion_date", TimestampType(), True)
 ])
 
@@ -310,7 +310,7 @@ def process_directory(bronze_dir, dataset_type):
             
             # Write to Silver layer
             silver_df.write \
-                .mode("overwrite") \
+                .mode("append") \
                 .parquet(output_path)
             
             print(f"Successfully processed {file_path} → {output_path}")
@@ -325,8 +325,8 @@ def process_directory(bronze_dir, dataset_type):
 
 if __name__ == "__main__":
     # Process both datasets
-    process_directory("hdfs://localhost:9000/bronze/vessels", "vessels")
-    process_directory("hdfs://localhost:9000/bronze/ports", "ports")
+    process_directory("hdfs://localhost:9000/home/itversity/bronze/vessels", "vessels")
+    process_directory("hdfs://localhost:9000/home/itversity/bronze/ports", "ports")
     
     # Completion message
     completion_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
@@ -334,3 +334,5 @@ if __name__ == "__main__":
     
     # Stop Spark
     spark.stop()
+
+

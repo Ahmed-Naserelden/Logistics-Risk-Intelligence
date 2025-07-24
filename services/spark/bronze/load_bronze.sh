@@ -86,7 +86,7 @@ for file in "${MAPFILE[@]}"; do
         hdfs dfs -mkdir -p "$hdfs_dir"
 
         # Upload the file to HDFS
-        hdfs dfs -put -f "$dest_path" "/bronze/$rel_path"
+        hdfs dfs -put -f "$dest_path" "$hdfs_dir"
 
         # Check if the copy and upload was successful
         if [ $? -eq 0 ]; then

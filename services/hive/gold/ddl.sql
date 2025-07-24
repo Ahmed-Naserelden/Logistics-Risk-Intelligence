@@ -3,16 +3,9 @@
 SET hive.exec.dynamic.partition = true;
 SET hive.exec.dynamic.partition.mode = nonstrict;
 
+DROP TABLE IF EXISTS gold_vessel_port;
 
-CREATE DATABASE IF NOT EXISTS silver;
-
-
-show databases;
-use silver;
-
--- DROP TABLE IF EXISTS silver.vessels;
-
-CREATE EXTERNAL TABLE IF NOT EXISTS silver.vessels (
+CREATE EXTERNAL TABLE IF NOT EXISTS gold_vessel_port (
     id INT,
     name STRING,
     url STRING,
@@ -29,85 +22,25 @@ CREATE EXTERNAL TABLE IF NOT EXISTS silver.vessels (
     arrival_date TIMESTAMP,
     destination_port_country STRING,
     destination_port_name STRING,
-    destination_port_lat STRING,
-    destination_port_lon STRING,
+    destination_port_lat StrING,
+    destination_port_lon String,
     reported_status STRING,
     report_date TIMESTAMP,
     ingestion_date TIMESTAMP,
     delay_in_arrival DOUBLE,
-    processing_date TIMESTAMP
-)
-STORED AS PARQUET
-LOCATION 'hdfs://localhost:9000/home/itversity/silver/vessels';
-
-
-
-
-
-
-SELECT * 
-FROM bronze.vessels
-WHERE destination_port_lon IS NOT NULL AND destination_port_lon != '-';
-
-
-SELECT * 
-FROM silver.vessels
-WHERE destination_port_lon IS NOT NULL AND destination_port_lon != '-';
-
-
-SELECT * 
-FROM silver.vessels
-WHERE destination_port_lon IS NOT NULL AND destination_port_lon != '-' AND arrival_date IS NOT NULL AND arrival_date != '-';
-
-SELECT * 
-FROM bronze.vessels
-WHERE arrival_date IS NOT NULL AND arrival_date != '-' AND destination_port_lon IS NOT NULL AND destination_port_lon != '-';
-
-
-SELECT * 
-FROM silver.vessels
-WHERE arrival_date IS NOT NULL AND arrival_date != '-';
-
-
-
-SELECT * 
-FROM silver.vessels
-WHERE id in (0); --  NULL AND destination_port_lon != '-';
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-CREATE EXTERNAL TABLE IF NOT EXISTS silver.ports (
-    OID_ INT,
-    World_Port_Index_Number INT,
+    processing_date TIMESTAMP,
+    dest_lat DOUBLE,
+    dest_lon DOUBLE,
+    dest_country STRING,
+    OID_ STRING,
+    World_Port_Index_Number STRING,
     Region_Name STRING,
     Main_Port_Name STRING,
     Country_Code STRING,
     World_Water_Body STRING,
     Sailing_Direction_or_Publication STRING,
     Publication_Link STRING,
-    Standard_Nautical_Chart INT,
+    Standard_Nautical_Chart STRING,
     Tidal_Range_m DOUBLE,
     Channel_Depth_m DOUBLE,
     Anchorage_Depth_m DOUBLE,
@@ -133,9 +66,31 @@ CREATE EXTERNAL TABLE IF NOT EXISTS silver.ports (
     Communications_Telephone STRING,
     Latitude DOUBLE,
     Longitude DOUBLE,
-    ingestion_date TIMESTAMP,
-    processing_date TIMESTAMP
+    port_ingestion_date STRING,
+    port_processing_date STRING,
+    port_lat DOUBLE,
+    port_lon DOUBLE,
+    port_country STRING,
+    is_old_vessel BOOLEAN,
+    vessel_size_type STRING,
+    delay_category STRING,
+    port_depth_type STRING,
+    is_high_deadweight BOOLEAN,
+    turnaround_time_hours DOUBLE,
+    route_key STRING,
+    arrival_hour INT,
+    is_peak_hour BOOLEAN,
+    is_delayed BOOLEAN,
+    gold_created_at Date
 )
 STORED AS PARQUET
-LOCATION 'hdfs://localhost:9000/home/itversity/silver/ports';
+LOCATION 'hdfs://localhost:9000/home/itversity/gold/vessels_ports_enriched';
+
+
+SELECT * 
+FROM gold_vessel_port
+WHERE port_country IS NOT NULL;
+
+
+
 

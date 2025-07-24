@@ -1,3 +1,4 @@
+-- Active: 1753308548962@@localhost@10000@default
 
 CREATE DATABASE IF NOT EXISTS bronze;
 
@@ -6,6 +7,7 @@ USE bronze;
 SET hive.exec.dynamic.partition = true;
 SET hive.exec.dynamic.partition.mode = nonstrict;
 
+DROP TABLE IF EXISTS bronze.vessels;
 
 CREATE EXTERNAL TABLE IF NOT EXISTS bronze.vessels (
     id INT,
@@ -36,5 +38,9 @@ WITH SERDEPROPERTIES (
     "escapeChar" = "\\"
 )
 STORED AS TEXTFILE
-LOCATION 'hdfs://localhost:9000/bronze/vessels'
+LOCATION 'hdfs://localhost:9000/home/itversity/bronze/vessels'
 TBLPROPERTIES ("skip.header.line.count" = "1");
+
+
+SELECT * FROM bronze.vessels
+WHERE destination_port_lon IS NOT NULL AND destination_port_lon != '-';

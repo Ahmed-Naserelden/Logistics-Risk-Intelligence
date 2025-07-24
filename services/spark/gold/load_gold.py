@@ -68,7 +68,7 @@ df_gold = df_joined \
 # === Save Gold data to HDFS (partitioned by creation date) ===
 # .partitionBy("gold_created_at") \
 df_gold.write \
-    .mode("overwrite") \
+    .mode("append") \
     .parquet("hdfs://localhost:9000/home/itversity/gold/vessels_ports_enriched")
 
 print("Gold layer written to HDFS.")
