@@ -15,3 +15,5 @@ services/extraction/data/vessels/
 **.ipynb_checkpoints/
 
 **.env
+
+**.log

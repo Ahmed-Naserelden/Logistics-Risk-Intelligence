@@ -82,7 +82,7 @@ for file in "${MAPFILE[@]}"; do
         fi
 
         # Ensure HDFS destination directory exists
-        hdfs_dir="~/bronze/$(dirname "$rel_path")"
+        hdfs_dir="/home/itversity/bronze/$(dirname "$rel_path")"
         hdfs dfs -mkdir -p "$hdfs_dir"
 
         # Upload the file to HDFS

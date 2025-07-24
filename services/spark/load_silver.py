@@ -222,18 +222,6 @@ def transform_vessels(df):
             ).otherwise(lit(None).cast(DoubleType()))
         ) \
         .withColumn("processing_date", current_timestamp()) \
-        .withColumn("destination_port_lat", 
-            when(
-                col("destination_port_lat").isNotNull(), 
-                regexp_replace(col("destination_port_lat"), r"[NS]", "").cast(DoubleType())
-            ).otherwise(lit(None).cast(DoubleType()))
-        ) \
-        .withColumn("destination_port_lon", 
-            when(
-                col("destination_port_lon").isNotNull(), 
-                regexp_replace(col("destination_port_lon"), r"[EW]", "").cast(DoubleType())
-            ).otherwise(lit(None).cast(DoubleType()))
-        ) \
         .select(
             "id", "name", "url", "type", "year_built", "gross_tonnage", "deadweight", 
             "length_m", "beam_m", "detail_link", "departure_date", "last_port_country", 

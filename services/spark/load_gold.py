@@ -1,7 +1,7 @@
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import (
-    col, lower, trim, when, lit, current_timestamp, round,
-    concat_ws, hour
+    col, lower, trim, when, round,
+    concat_ws, hour, current_date
 )
 
 # Initialize Spark session
@@ -63,12 +63,12 @@ df_gold = df_joined \
         when((col("arrival_hour").between(8,10)) | (col("arrival_hour").between(16,18)), True).otherwise(False)
     ) \
     .withColumn("is_delayed", when(col("delay_in_arrival") > 0, True).otherwise(False)) \
-    .withColumn("gold_created_at", current_timestamp())
+    .withColumn("gold_created_at", current_date())
 
 # === Save Gold data to HDFS (partitioned by creation date) ===
+# .partitionBy("gold_created_at") \
 df_gold.write \
     .mode("overwrite") \
-    .partitionBy("gold_created_at") \
     .parquet("hdfs://localhost:9000/home/itversity/gold/vessels_ports_enriched")
 
 print("Gold layer written to HDFS.")
