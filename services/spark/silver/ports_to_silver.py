@@ -1,49 +1,17 @@
-from pyspark.sql import SparkSession
-from pyspark.sql.functions import (
-    col, to_timestamp, unix_timestamp, when, 
-    lit, current_timestamp, coalesce, regexp_replace, length
-)
-from pyspark.sql.types import (
-    StructType, StructField, StringType, 
-    IntegerType, DoubleType, TimestampType, DateType
-)
-import os
-from datetime import datetime
+from pyspark.sql import SparkSession, DataFrame, Row
+from pyspark.sql.functions import col, to_timestamp, unix_timestamp, when, lit, current_timestamp, coalesce, regexp_replace, length, lower
+from pyspark.sql.types import StructType, StructField, StringType, IntegerType, DoubleType, TimestampType, DateType
+from pyspark.sql.functions import regexp_replace, trim, concat_ws, to_date, least, greatest, current_date, udf
+
 
 # Initialize Spark session with legacy time parser
 spark = SparkSession.builder \
-    .appName("BronzeToSilverTransformation") \
+    .appName("PORTBronzeToSilverTransformation") \
     .config("spark.sql.legacy.timeParserPolicy", "LEGACY") \
+    .config("spark.eventLog.logBlockUpdates.enabled", True)\
+    .enableHiveSupport() \
     .getOrCreate()
 
-# =============================================
-# SCHEMA DEFINITIONS
-# =============================================
-
-# Vessels schema
-vessel_schema = StructType([
-    StructField("id", IntegerType(), True),
-    StructField("name", StringType(), True),
-    StructField("url", StringType(), True),
-    StructField("type", StringType(), True),
-    StructField("year_built", IntegerType(), True),
-    StructField("gross_tonnage", IntegerType(), True),
-    StructField("deadweight", IntegerType(), True),
-    StructField("length_m", DoubleType(), True),
-    StructField("beam_m", DoubleType(), True),
-    StructField("detail_link", StringType(), True),
-    StructField("departure_date", TimestampType(), True),
-    StructField("last_port_country", StringType(), True),
-    StructField("last_port_name", StringType(), True),
-    StructField("arrival_date", TimestampType(), True),
-    StructField("destination_port_country", StringType(), True),
-    StructField("destination_port_name", StringType(), True),
-    StructField("destination_port_lat", StringType(), True),
-    StructField("destination_port_lon", StringType(), True),
-    StructField("reported_status", StringType(), True),
-    StructField("report_date", TimestampType(), True),
-    StructField("ingestion_date", TimestampType(), True)
-])
 
 # Ports schema (COMPLETE DEFINITION)
 ports_schema = StructType([
@@ -159,9 +127,12 @@ ports_schema = StructType([
     StructField("ingestion_date", TimestampType(), True)
 ])
 
-# =============================================
-# HELPER FUNCTIONS
-# =============================================
+
+
+ports_path = "hdfs://localhost:9000/home/itversity/bronze/ports"
+
+df = spark.read.option("header", "true").schema(ports_schema).csv(ports_path)
+
 
 def clean_column_name(col_name):
     """Clean column names by replacing special characters with underscores"""
@@ -176,59 +147,6 @@ def clean_column_name(col_name):
         .replace("__", "_")   # Replace double underscores
     )
 
-def parse_custom_date(date_col):
-    """Handle multiple date formats in the source data using PySpark column operations"""
-    return when(
-        # Check for null or empty strings
-        (col(date_col).isNull()) | (col(date_col).cast("string").isin("", "-", "null")),
-        lit(None).cast(TimestampType())
-    ).when(
-        # Format: "Jul 6, 21:11 UTC (21 hours ago)"
-        (col(date_col).contains("UTC") & col(date_col).contains("ago")),
-        to_timestamp(regexp_replace(col(date_col), r"\s*UTC.*", ""), "MMM d, HH:mm")
-    ).when(
-        # Format: "Jul 5, 02:00"
-        (col(date_col).contains(",") & col(date_col).contains(":")),
-        to_timestamp(col(date_col), "MMM d, HH:mm")
-    ).when(
-        # Format: "2025-07-07"
-        (col(date_col).contains("-") & (length(col(date_col)) == 10)),
-        to_timestamp(col(date_col), "yyyy-MM-dd")
-    ).when(
-        # Format: "2025-07-19 01:01:21"
-        (col(date_col).contains("-") & col(date_col).contains(":")),
-        to_timestamp(col(date_col), "yyyy-MM-dd HH:mm:ss")
-    ).otherwise(lit(None).cast(TimestampType()))
-
-# =============================================
-# DATA TRANSFORMATION LOGIC
-# =============================================
-
-def transform_vessels(df):
-    """Transform vessels data from Bronze to Silver"""
-    return df \
-        .filter((col("name").isNotNull()) & (col("report_date").isNotNull())) \
-        .withColumn("gross_tonnage", coalesce(col("gross_tonnage").cast(IntegerType()), lit(0))) \
-        .withColumn("deadweight", coalesce(col("deadweight").cast(IntegerType()), lit(0))) \
-        .withColumn("length_m", coalesce(col("length_m").cast(DoubleType()), lit(0.0))) \
-        .withColumn("beam_m", coalesce(col("beam_m").cast(DoubleType()), lit(0.0))) \
-        .withColumn("departure_date", parse_custom_date("departure_date")) \
-        .withColumn("arrival_date", parse_custom_date("arrival_date")) \
-        .withColumn("report_date", parse_custom_date("report_date")) \
-        .withColumn("delay_in_arrival", 
-            when(
-                (col("arrival_date").isNotNull()) & (col("departure_date").isNotNull()), 
-                (unix_timestamp(col("arrival_date")) - unix_timestamp(col("departure_date"))) / 3600
-            ).otherwise(lit(None).cast(DoubleType()))
-        ) \
-        .withColumn("processing_date", current_timestamp()) \
-        .select(
-            "id", "name", "url", "type", "year_built", "gross_tonnage", "deadweight", 
-            "length_m", "beam_m", "detail_link", "departure_date", "last_port_country", 
-            "last_port_name", "arrival_date", "destination_port_country", "destination_port_name", 
-            "destination_port_lat", "destination_port_lon", "reported_status", "report_date", 
-            "ingestion_date", "delay_in_arrival", "processing_date"
-        )
 
 def transform_ports(df):
     """Transform ports data from Bronze to Silver"""
@@ -274,65 +192,16 @@ def transform_ports(df):
                    coalesce(col("Offshore_Maximum_Vessel_Draft_m").cast(DoubleType()), lit(0.0))) \
         .withColumn("Latitude", col("Latitude").cast(DoubleType())) \
         .withColumn("Longitude", col("Longitude").cast(DoubleType())) \
-        .withColumn("ingestion_date", to_timestamp(col("ingestion_date"), "yyyy-MM-dd HH:mm:ss")) \
+        .withColumn("ingestion_date", to_date(col("ingestion_date"))) \
         .withColumn("processing_date", current_timestamp())
 
-# =============================================
-# MAIN PROCESSING LOGIC
-# =============================================
-
-def process_directory(bronze_dir, dataset_type):
-    """Process all files in a bronze directory"""
-    files = spark.sparkContext.wholeTextFiles(bronze_dir + "/*.csv").keys().collect()
-    
-    for file_path in files:
-        try:
-            print(f"\nProcessing {file_path}...")
-            
-            # Read data with appropriate method
-            if dataset_type == "vessels":
-                df = spark.read.option("header", "true").schema(vessel_schema).csv(file_path)
-                silver_df = transform_vessels(df)
-                partition_col = "report_date"
-            else:
-                df = spark.read.option("header", "true").schema(ports_schema).csv(file_path)
-                silver_df = transform_ports(df)
-                partition_col = "ingestion_date"
-            
-            # Determine output path
-            silver_base = "hdfs://localhost:9000/home/itversity/silver/"
-            silver_dir = "vessels" if dataset_type == "vessels" else "ports"
-            relative_path = os.path.relpath(os.path.dirname(file_path), bronze_dir)
-            output_path = os.path.join(silver_base, silver_dir, relative_path) if relative_path != "." else os.path.join(silver_base, silver_dir)
-            
-            # Ensure output directory exists
-            os.makedirs(os.path.dirname(output_path.replace("hdfs://localhost:9000/", "/")), exist_ok=True)
-            
-            # Write to Silver layer
-            silver_df.write \
-                .mode("append") \
-                .parquet(output_path)
-            
-            print(f"Successfully processed {file_path} → {output_path}")
-            
-        except Exception as e:
-            print(f"ERROR processing {file_path}: {str(e)}")
-            continue
-
-# =============================================
-# EXECUTION
-# =============================================
-
-if __name__ == "__main__":
-    # Process both datasets
-    process_directory("hdfs://localhost:9000/home/itversity/bronze/vessels", "vessels")
-    process_directory("hdfs://localhost:9000/home/itversity/bronze/ports", "ports")
-    
-    # Completion message
-    completion_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    print(f"\nSilver layer transformation completed at {completion_time}")
-    
-    # Stop Spark
-    spark.stop()
+df = transform_ports(df)
 
 
+spark.sql("CREATE DATABASE IF NOT EXISTS silver")
+
+spark.sql("use silver")
+df.write \
+  .mode("append") \
+  .partitionBy("ingestion_date") \
+  .saveAsTable("ports")

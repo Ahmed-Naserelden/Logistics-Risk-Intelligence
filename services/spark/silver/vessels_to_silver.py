@@ -6,7 +6,7 @@ from pyspark.sql.functions import regexp_replace, trim, concat_ws, lit, to_date,
 
 # Initialize Spark session with legacy time parser
 spark = SparkSession.builder \
-    .appName("BronzeToSilverTransformation") \
+    .appName("VesselsBronzeToSilverTransformation") \
     .config("spark.sql.legacy.timeParserPolicy", "LEGACY") \
     .config("spark.eventLog.logBlockUpdates.enabled", True)\
     .enableHiveSupport() \
@@ -166,3 +166,9 @@ df.write \
 
 
 print("Data written to silver.vessels table successfully.")
+
+
+
+# to run this script to load vessels which on bronze in this path
+# /opt/spark3/bin/spark-submit --master local[2] --conf spark.ui.port=18181 /home/itversity/spark/silver/vessels_to_silver.py
+# 
