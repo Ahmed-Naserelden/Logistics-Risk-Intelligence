@@ -12,8 +12,12 @@
 
 # services/extraction/data/vessels/
 
-**.ipynb_checkpoints/
-
 **.env
 
 **.log
+**data/
+
+*.ipynb_checkpoints
+
+services/spark/.env
+
