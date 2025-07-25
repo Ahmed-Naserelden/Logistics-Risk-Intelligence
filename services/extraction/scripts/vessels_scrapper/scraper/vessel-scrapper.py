@@ -359,7 +359,11 @@ if __name__ == '__main__':
     print("Count: ", len(list_of_invalid))
     print(list_of_invalid)
 
+    # to can see from folder explorer
     csv_temp_output_path = f"/extraction/data/vessels/{datetime.now().strftime('%Y-%m-%d')}.csv"
+    df.toPandasDataFrame().to_csv(csv_temp_output_path)
+    
+    csv_temp_output_path = f"/bucket/vessels/{datetime.now().strftime('%Y-%m-%d')}.csv"
     df.toPandasDataFrame().to_csv(csv_temp_output_path)
     print(df.toPandasDataFrame().head())
     

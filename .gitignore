@@ -10,7 +10,7 @@
 
 **sftp-data/
 
-services/extraction/data/vessels/
+# services/extraction/data/vessels/
 
 **.ipynb_checkpoints/
 

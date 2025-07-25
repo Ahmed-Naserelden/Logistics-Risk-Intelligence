@@ -8,7 +8,7 @@ from urllib.parse import urljoin
 
 Base_url = os.getenv("Base_url", "https://msi.nga.mil") 
 Download_endpoint = os.getenv("download_endpoint", "/api/publications/download?type=view&key=16920959/SFH00000/UpdatedPub150.csv")
-Data_dir = os.getenv("data_dir", "/extraction/data/ports")
+Data_dir = os.getenv("data_dir", "/bucket/ports")
 File_prefix = os.getenv("file_prefix", "WPI") 
 Log_file = os.getenv("Log_file", "/extraction/logs/download_ports_api.log")
 

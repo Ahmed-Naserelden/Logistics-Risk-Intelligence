@@ -117,42 +117,42 @@ services:
   #   networks:
   #     bd-casestudy-nw:
 
-  # postgres:
-  #   image: postgres:latest
-  #   container_name: postgres
-  #   hostname: postgres
-  #   ports:
-  #     - '7432:5432'
-  #   environment:
-  #     POSTGRES_USER: postgres
-  #     POSTGRES_PASSWORD: postgres
-  #     POSTGRES_DB: maritime_logistics
-  #   command: [ 'postgres', '-c', 'wal_level=logical' ]
-  #   healthcheck:
-  #     test: [ 'CMD', 'psql', '-U', 'postgres', '-c', 'SELECT 1' ]
-  #     interval: 10s
-  #     timeout: 5s
-  #     retries: 5
-  #   networks:
-  #     bd-casestudy-nw:
-  #   volumes:
-  #     - pgvol:/var/lib/postgresql/data
+  postgres:
+    image: postgres:latest
+    container_name: postgres
+    hostname: postgres
+    ports:
+      - '7432:5432'
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: maritime_logistics
+    command: [ 'postgres', '-c', 'wal_level=logical' ]
+    healthcheck:
+      test: [ 'CMD', 'psql', '-U', 'postgres', '-c', 'SELECT 1' ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      bd-casestudy-nw:
+    volumes:
+      - pgvol:/var/lib/postgresql/data
 
-  # extraction_server:
-  #   build:
-  #     context: services/extraction/
-  #     dockerfile: Dockerfile
-  #   hostname: extraction-layer
-  #   volumes:
-  #     - ./services/extraction:/extraction/
-  #     - shared_storage:/extraction/data
-  #   networks:
-  #     - bd-casestudy-nw
-  #   entrypoint: /extraction/entrypoint.sh
-  #   depends_on:
-  #     - postgres
-  #   env_file:
-  #     - ./services/extraction/.env
+  extraction_server:
+    build:
+      context: services/extraction/
+      dockerfile: Dockerfile
+    hostname: extraction-layer
+    volumes:
+      - ./services/extraction:/extraction/
+      - shared_storage:/bucket
+    networks:
+      - bd-casestudy-nw
+    entrypoint: /extraction/entrypoint.sh
+    depends_on:
+      - postgres
+    env_file:
+      - ./services/extraction/.env
 
   shared_server:
     build:
