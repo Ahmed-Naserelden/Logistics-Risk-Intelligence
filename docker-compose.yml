@@ -118,7 +118,7 @@ services:
   #     bd-casestudy-nw:
 
   # postgres:
-  #   image: postgres:latest
+  #   image: postgres:postgres:13
   #   container_name: postgres
   #   hostname: postgres
   #   ports:
@@ -150,22 +150,23 @@ services:
   #     - bd-casestudy-nw
   #   entrypoint: /extraction/entrypoint.sh
   #   depends_on:
-  #     - postgres
+  #     debezium:
+  #       condition: service_healthy
   #   env_file:
   #     - ./services/extraction/.env
 
-  shared_server:
-    build:
-      context: services/shared/
-      dockerfile: Dockerfile
-    hostname: shared-layer
-    volumes:
-      - ./services/shared:/shared/
-      - shared_storage:/shared/bucket
-    entrypoint: /shared/entrypoint.sh
-    
-    networks:
-      - bd-casestudy-nw
+  # shared_server:
+  #   build:
+  #     context: services/shared/
+  #     dockerfile: Dockerfile
+  #   hostname: shared-layer
+  #   volumes:
+  #     - ./services/shared:/shared/
+  #     - shared_storage:/shared/bucket
+  #   entrypoint: /shared/entrypoint.sh
+
+  #   networks:
+  #     - bd-casestudy-nw
 
   itvdelab:
     image: itversity/itvdelab
@@ -247,3 +248,4 @@ volumes:
 
   pgvol:
   shared_storage:
+
