@@ -117,42 +117,42 @@ services:
   #   networks:
   #     bd-casestudy-nw:
 
-  postgres:
-    image: postgres:latest
-    container_name: postgres
-    hostname: postgres
-    ports:
-      - '7432:5432'
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: maritime_logistics
-    command: [ 'postgres', '-c', 'wal_level=logical' ]
-    healthcheck:
-      test: [ 'CMD', 'psql', '-U', 'postgres', '-c', 'SELECT 1' ]
-      interval: 10s
-      timeout: 5s
-      retries: 5
-    networks:
-      bd-casestudy-nw:
-    volumes:
-      - pgvol:/var/lib/postgresql/data
+  # postgres:
+  #   image: postgres:latest
+  #   container_name: postgres
+  #   hostname: postgres
+  #   ports:
+  #     - '7432:5432'
+  #   environment:
+  #     POSTGRES_USER: postgres
+  #     POSTGRES_PASSWORD: postgres
+  #     POSTGRES_DB: maritime_logistics
+  #   command: [ 'postgres', '-c', 'wal_level=logical' ]
+  #   healthcheck:
+  #     test: [ 'CMD', 'psql', '-U', 'postgres', '-c', 'SELECT 1' ]
+  #     interval: 10s
+  #     timeout: 5s
+  #     retries: 5
+  #   networks:
+  #     bd-casestudy-nw:
+  #   volumes:
+  #     - pgvol:/var/lib/postgresql/data
 
-  extraction_server:
-    build:
-      context: services/extraction/
-      dockerfile: Dockerfile
-    hostname: extraction-layer
-    volumes:
-      - ./services/extraction:/extraction/
-      - shared_storage:/bucket
-    networks:
-      - bd-casestudy-nw
-    entrypoint: /extraction/entrypoint.sh
-    depends_on:
-      - postgres
-    env_file:
-      - ./services/extraction/.env
+  # extraction_server:
+  #   build:
+  #     context: services/extraction/
+  #     dockerfile: Dockerfile
+  #   hostname: extraction-layer
+  #   volumes:
+  #     - ./services/extraction:/extraction/
+  #     - shared_storage:/bucket
+  #   networks:
+  #     - bd-casestudy-nw
+  #   entrypoint: /extraction/entrypoint.sh
+  #   depends_on:
+  #     - postgres
+  #   env_file:
+  #     - ./services/extraction/.env
 
   shared_server:
     build:
@@ -184,6 +184,7 @@ services:
     volumes:
       - ./services/spark:/home/itversity/spark
       - ./services/hive:/home/itversity/hive
+      - ./.ssh/authorized_keys:/home/itversity/.ssh/authorized_keys
 
     environment:
       SHELL: /bin/bash
@@ -195,6 +196,7 @@ services:
 
   cluster_util_db:
     image: postgres:13
+    hostname: cluster_util_db
     ports:
       - "6432:5432"
     volumes:
@@ -203,6 +205,35 @@ services:
       - itvdelabnw
     environment:
       POSTGRES_PASSWORD: itversity
+
+  airflow:
+    image: apache/airflow:2.9.1
+    container_name: airflow
+    restart: always
+    depends_on:
+      - airflow-db
+    environment:
+      AIRFLOW__CORE__EXECUTOR: LocalExecutor
+      AIRFLOW__CORE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@cluster_util_db:5432/airflow
+      AIRFLOW__CORE__FERNET_KEY: ''
+      AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: 'false'
+      AIRFLOW__CORE__LOAD_EXAMPLES: 'false'
+      AIRFLOW__WEBSERVER__ENABLE_PROXY_FIX: 'true'
+      AIRFLOW__SCHEDULER__DAG_DIR_LIST_INTERVAL: 190
+    volumes:
+      - ./airflow/dags:/opt/airflow/dags
+      - ./.ssh:/home/airflow/.ssh
+    ports:
+      - "8081:8080"  # Airflow Web UI
+    command: >
+      bash -c "
+      airflow db init &&
+      airflow users create --username admin --firstname Admin --lastname User --role Admin --password admin --email admin@example.com &&
+      airflow scheduler &
+      airflow webserver"
+    networks:
+      - bd-casestudy-nw
+      - itvdelabnw
 
 networks:
   bd-casestudy-nw:
