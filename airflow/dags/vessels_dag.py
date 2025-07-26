@@ -7,7 +7,7 @@ from datetime import datetime
 with DAG(
     dag_id="VesselsDAG",
     start_date=datetime(2023, 1, 1),
-    schedule_interval="0 * * * *",  
+    schedule_interval="0 0 * * *", # "@daily"
     catchup=False,
     description="A simple test DAG to print a message",
     tags=["test"],
