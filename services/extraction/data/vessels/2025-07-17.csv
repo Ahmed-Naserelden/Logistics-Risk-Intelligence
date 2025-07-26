@@ -1,0 +1,127 @@
+,name,url,type,year_built,gross_tonnage,deadweight,length(m),beam(m),detail_link,departure_date,last_port_country,last_port_name,arrival_date,destination_port_country,destination_port_name,destination_port_lat,destination_port_lon,reported_status,report_date
+0,ATHINEA,/vessels/details/9291248,Tanker,2006,60007,107160,248,43,,"Jul 12, 02:22 UTC (6 days ago)",Egypt,As Suways (Suez) Anch.,"Jul 17, 14:00",,WADI FEIRAN EG,-,-,-,2025-07-17
+1,ETC RAMSIS,/vessels/details/9260809,Tanker,2003,59574,110673,246,42,,"Jul 17, 05:54 UTC (10 hours ago)",Egypt,As Suways (Suez) Anch.,"Jul 18, 20:00
+(in 1 day)",,EGZTB,-,-,Under way,2025-07-17
+2,ALEXIA 3,/vessels/details/9173721,-,1999,56841,105570,248,43,,-,-,-,-,-,-,-,-,-,2025-07-17
+3,CHRIS,/vessels/details/9304643,Tanker (HAZ-B),2004,49838,105778,239,42,,"Jul 12, 08:24 UTC (5 days ago)",Egypt,As Suways (Suez) Anch.,"Jul 16, 18:00",,AIN SUKHNA/EGY,-,-,-,2025-07-17
+4,AL NABILA 6,/vessels/details/9236987,Tanker (HAZ-A),2003,22184,34810,171,27,,"Jul 17, 13:03 UTC (3 hours ago)",Egypt,Alexandria,"Jul 11, 05:00",,ALEXADRIA/EGY,-,-,Under way,2025-07-17
+5,NAGDA1,/vessels/details/8215364,Other type,1984,2042,3220,87,16,,"Mar 2, 12:01 UTC (137 days ago)",Egypt,Ismailia Anch.,-,,Destination not available,-,-,-,2025-07-17
+6,NAGDA 2,/vessels/details/8215376,-,1984,2042,3220,88,16,,-,-,-,-,-,-,-,-,-,2025-07-17
+7,CPC VI,/vessels/details/9758181,Tanker,2015,1581,2397,74,12,,"Jul 12, 10:14 UTC (5 days ago)",Egypt,Port Tewfik,-,,Destination not available,-,-,-,2025-07-17
+8,CPC IV,/vessels/details/9919606,Tanker,2021,1129,1681,67,12,,"Jul 2, 09:56 UTC (15 days ago)",Egypt,Alexandria,-,,Destination not available,-,-,-,2025-07-17
+9,CPC II,/vessels/details/9659907,Tanker,2012,1049,1601,66,12,,"Jul 15, 14:50 UTC (2 days ago)",Egypt,As Suways / Suez Port,-,,Destination not available,-,-,Under way,2025-07-17
+10,CPC I,/vessels/details/9620267,Tanker,2012,1049,1601,66,12,,"Jul 14, 15:53 UTC (3 days ago)",Egypt,As Suways / Suez Port,-,,Destination not available,-,-,Under way,2025-07-17
+11,MISR 1,/vessels/details/9763368,Tanker,2015,1021,1754,68,11,,"Jul 11, 10:41 UTC (6 days ago)",Egypt,Port Tewfik,"Oct 3, 20:59
+(in 78 days)",,IN-ORDER,-,-,Moored,2025-07-17
+12,NISR 3,/vessels/details/7821233,-,1980,687,965,57,10,,-,-,-,-,-,-,-,-,-,2025-07-17
+13,EMDAD 1,/vessels/details/9672076,Tanker,2019,500,900,48,9,,"Jul 16, 13:47 UTC (1 day ago)",Egypt,Port Said,-,,Destination not available,-,-,-,2025-07-17
+14,CPCIII,/vessels/details/9653355,-,2013,499,810,50,10,,-,-,-,-,-,-,-,-,-,2025-07-17
+15,HEBAT ALLAH 1,/vessels/details/8518132,-,1985,494,700,45,8,,-,-,-,-,-,-,-,-,-,2025-07-17
+16,MISR 2,/vessels/details/622123410,Tanker,-,-,-,68,11,,"Jun 23, 20:39 UTC (24 days ago)",Egypt,As Suways / Suez Port,-,,Destination not available,-,-,Under way,2025-07-17
+17,GIGI,/vessels/details/622123102,-,-,-,-,39,6,,-,-,-,-,-,-,-,-,-,2025-07-17
+18,MISR 3,/vessels/details/622123411,Tanker,-,-,-,68,11,,"Jun 23, 01:41 UTC (25 days ago)",Egypt,As Suways / Suez Port,-,,Destination not available,-,-,Under way,2025-07-17
+19,AYEDA 3,/vessels/details/7630969,-,1977,350,500,53.83,-,,-,-,-,-,-,-,-,-,-,2025-07-17
+20,TAAWON 14,/vessels/details/8316742,-,1984,643,975,60,10,,-,-,-,-,-,-,-,-,-,2025-07-17
+21,AYEDA 4,/vessels/details/7630945,-,1976,350,500,-,-,,-,-,-,-,-,-,-,-,-,2025-07-17
+22,ATBARA,/vessels/details/7630995,-,1979,350,508,54,10,,-,-,-,-,-,-,-,-,-,2025-07-17
+23,AL BURULLUS,/vessels/details/7631030,-,1983,380,508,54,10,,-,-,-,-,-,-,-,-,-,2025-07-17
+24,CIDCO OIL,/vessels/details/9769582,-,2014,434,1000,46,9,,-,-,-,-,-,-,-,-,-,2025-07-17
+25,TAAWON 8,/vessels/details/7600627,-,1977,1244,1829,73,11,,-,-,-,-,-,-,-,-,-,2025-07-17
+26,SPEED 1,/vessels/details/9145566,-,2007,436,595,49,8,,-,-,-,-,-,-,-,-,-,2025-07-17
+27,FEKRY,/vessels/details/7928328,-,1982,260,300,43,8,,-,-,-,-,-,-,-,-,-,2025-07-17
+28,MISR 2,/vessels/details/9871672,-,2019,998,1750,68,11,,-,-,-,-,-,-,-,-,-,2025-07-17
+29,TAAWON 3,/vessels/details/5348093,-,1960,392,500,53,8,,-,-,-,-,-,-,-,-,-,2025-07-17
+30,EL ARESH,/vessels/details/7728194,-,1979,170,300,36,7,,-,-,-,-,-,-,-,-,-,2025-07-17
+31,NOUR 1,/vessels/details/622102400,Tanker,-,-,-,43,9,,"Jun 25, 15:12 UTC (22 days ago)",Egypt,Port Said,-,,Destination not available,-,-,-,2025-07-17
+32,SEA STAR PORT SAID,/vessels/details/622108203,-,-,-,-,19,6,,-,-,-,-,-,-,-,-,-,2025-07-17
+33,TAAWON 11,/vessels/details/8112201,-,1982,643,1085,60,10,,-,-,-,-,-,-,-,-,-,2025-07-17
+34,REDA MEN ALLAH,/vessels/details/622104701,Tanker,-,-,-,26,6,,"Jul 9, 12:11 UTC (8 days ago)",Egypt,Port Said Anch.,-,,Destination not available,-,-,-,2025-07-17
+35,TANKER NO. 13,/vessels/details/8215405,-,1985,352,550,42,8,,-,-,-,-,-,-,-,-,-,2025-07-17
+36,TANKER 231,/vessels/details/7928548,-,1986,300,400,43,8,,-,-,-,-,-,-,-,-,-,2025-07-17
+37,EL BERNS AHMED,/vessels/details/7435242,-,1980,200,350,39,7,,-,-,-,-,-,-,-,-,-,2025-07-17
+38,NISR 4,/vessels/details/7821245,-,1980,678,965,57,10,,-,-,-,-,-,-,-,-,-,2025-07-17
+39,AL FURAT,/vessels/details/7630983,-,1978,350,508,54,10,,-,-,-,-,-,-,-,-,-,2025-07-17
+40,ATBARA,/vessels/details/7630995,-,1979,350,508,54,10,,-,-,-,-,-,-,-,-,-,2025-07-17
+41,TAAWON 8,/vessels/details/7600627,-,1977,1244,1829,73,11,,-,-,-,-,-,-,-,-,-,2025-07-17
+42,FEKRY,/vessels/details/7928328,-,1982,260,300,43,8,,-,-,-,-,-,-,-,-,-,2025-07-17
+43,TAAWON 9,/vessels/details/7600639,-,1977,1244,1829,73,11,,-,-,-,-,-,-,-,-,-,2025-07-17
+44,SPEED 1,/vessels/details/9145566,-,2007,436,595,49,8,,-,-,-,-,-,-,-,-,-,2025-07-17
+45,NOUR 1,/vessels/details/622102400,Tanker,-,-,-,43,9,,"Jun 25, 15:12 UTC (22 days ago)",Egypt,Port Said,-,,Destination not available,-,-,-,2025-07-17
+46,ALEX STAR,/vessels/details/8999582,-,1999,311,297,37,8,,-,-,-,-,-,-,-,-,-,2025-07-17
+47,MISR 3,/vessels/details/9871684,-,2019,998,1750,68,11,,-,-,-,-,-,-,-,-,-,2025-07-17
+48,ALOBOUR,/vessels/details/7728182,-,1979,170,300,36,7,,-,-,-,-,-,-,-,-,-,2025-07-17
+49,TANKER NO. 230,/vessels/details/7944748,-,1978,300,491,43,8,,-,-,-,-,-,-,-,-,-,2025-07-17
+50,TANKER NO. 10,/vessels/details/8219700,-,1984,207,300,36,7,,-,-,-,-,-,-,-,-,-,2025-07-17
+51,OSIRIS,/vessels/details/7728223,-,1979,350,500,48,8,,-,-,-,-,-,-,-,-,-,2025-07-17
+52,NISR 4,/vessels/details/7821245,-,1980,678,965,57,10,,-,-,-,-,-,-,-,-,-,2025-07-17
+53,TAAWON 11,/vessels/details/8112201,-,1982,643,1085,60,10,,-,-,-,-,-,-,-,-,-,2025-07-17
+54,MARYUT,/vessels/details/7630957,-,1976,350,500,53.83,-,,-,-,-,-,-,-,-,-,-,2025-07-17
+55,ALEXIA 3,/vessels/details/622120925,Tanker,-,-,-,248,43,,"Jul 16, 04:15 UTC (1 day ago)",Egypt,Port Said Anch.,"Jul 17, 04:30",,RAS SHUKIER,-,-,-,2025-07-17
+56,AL FURAT,/vessels/details/7630983,-,1978,350,508,54,10,,-,-,-,-,-,-,-,-,-,2025-07-17
+57,SEA STAR PORT SAID,/vessels/details/622108203,-,-,-,-,19,6,,-,-,-,-,-,-,-,-,-,2025-07-17
+58,NISR 2,/vessels/details/7600641,-,1977,1243,1829,73,11,,-,-,-,-,-,-,-,-,-,2025-07-17
+59,TAAWON 3,/vessels/details/5348093,-,1960,392,500,53,8,,-,-,-,-,-,-,-,-,-,2025-07-17
+60,AL SALAM,/vessels/details/7728170,-,1978,170,300,36,7,,-,-,-,-,-,-,-,-,-,2025-07-17
+61,AKDU,/vessels/details/7631028,-,1979,380,508,54,10,,-,-,-,-,-,-,-,-,-,2025-07-17
+62,BADR,/vessels/details/7928330,-,1984,260,400,43,8,,-,-,-,-,-,-,-,-,-,2025-07-17
+63,TANKER NO. 230,/vessels/details/7944748,-,1978,300,491,43,8,,-,-,-,-,-,-,-,-,-,2025-07-17
+64,TANKER NO. 10,/vessels/details/8219700,-,1984,207,300,36,7,,-,-,-,-,-,-,-,-,-,2025-07-17
+65,CPCV,/vessels/details/9933949,Tanker,2022,1129,1678,66,11,,"Jul 16, 17:47 UTC (22 hours ago)",Egypt,As Suways (Suez) Anch.,-,,Destination not available,-,-,-,2025-07-17
+66,OSIRIS,/vessels/details/7728223,-,1979,350,500,48,8,,-,-,-,-,-,-,-,-,-,2025-07-17
+67,TAAWON 4,/vessels/details/5348108,-,1959,391,500,53,9,,-,-,-,-,-,-,-,-,-,2025-07-17
+68,AL NIL,/vessels/details/7630971,-,1978,350,508,54,10,,-,-,-,-,-,-,-,-,-,2025-07-17
+69,WADI ALMOLOUK,/vessels/details/9897999,Cargo ship,2020,44732,82318,229,32,,"Jul 10, 14:52 UTC (7 days ago)",Taiwan,Taichung,"Jul 21, 21:00
+(in 4 days)",Australia,Kwinana,32.1946S, 115.7255E,Under way,2025-07-17
+70,WADI ALARISH,/vessels/details/9952672,Cargo ship,2024,44560,82234,229,32,,"Jun 25, 21:13 UTC (22 days ago)",United Arab Emirates (UAE),Al Fujayrah Anch.,"Jul 23, 18:00
+(in 6 days)",Uruguay,Nueva Palmira,33.8791S, 58.4269W,-,2025-07-17
+71,WADI ALMALEKAT,/vessels/details/9763904,Cargo ship,2017,44069,81227,229,32,,"Jul 12, 06:51 UTC (5 days ago)",China,Dongguan,"Jul 17, 18:15
+(in 2 hours)",Singapore,Singapore,1.2788N, 103.7566E,Under way,2025-07-17
+72,WADI ALKARM,/vessels/details/9460760,-,2011,43736,80533,229,32,,-,-,-,-,-,-,-,-,-,2025-07-17
+73,WADI SAFAGA,/vessels/details/9460734,-,2010,43736,80443,229,32,,-,-,-,-,-,-,-,-,-,2025-07-17
+74,WADI TIBA,/vessels/details/9460746,Cargo ship,2011,43736,80469,229,32,,"Jul 11, 07:39 UTC (6 days ago)",Gibraltar,Gibraltar West Anch.,"Jul 22, 10:00
+(in 5 days)",,BARCARENA - BRAZIL,-,-,-,2025-07-17
+75,WADI ALYARMOUK,/vessels/details/9460772,Cargo ship,2010,43726,80384,229,32,,"Jul 9, 04:22 UTC (8 days ago)",Italy,Ravenna Anch.,"Jul 9, 05:17 UTC
+ARRIVED",Italy,Ravenna,44.4777N, 12.2604E,Moored,2025-07-17
+76,ESNA,/vessels/details/9139268,-,1998,38464,71598,224,32,,-,-,-,-,-,-,-,-,-,2025-07-17
+77,EDFU,/vessels/details/9139256,Cargo ship,1997,38464,71572,224,32,,"Jul 6, 17:42 UTC (11 days ago)",Spain,Las Palmas,"Jul 16, 14:40 UTC
+ARRIVED",Turkey,Nemrut Anch.,38.7768N, 26.909E,At anchor,2025-07-17
+78,WADI AL KARNAK,/vessels/details/9127136,Cargo ship,1997,37028,70090,225,32,,"Jul 3, 19:17 UTC (14 days ago)",France,La Pallice,"Jul 14, 20:26 UTC
+ARRIVED",Egypt,Port Said,31.2644N, 32.3346E,Moored,2025-07-17
+79,WADI ALARAB,/vessels/details/9107681,Cargo ship,1995,37027,64214,225,32,,"Jul 10, 14:44 UTC (7 days ago)",France,La Pallice,"Jul 21, 15:00
+(in 4 days)",Egypt,Dumyat (Damietta),31.4919N, 31.7534E,Under way,2025-07-17
+80,WADI ALRAYAN,/vessels/details/9208875,Cargo ship,2000,34750,40301,215,32,,"Jul 17, 11:34 UTC (4 hours ago)",United Arab Emirates (UAE),Mina Khalifa/Abu Dhabi Anch.,"Jul 17, 11:44 UTC
+ARRIVED",United Arab Emirates (UAE),Mina Khalifa/Abu Dhabi Anch.,24.8324N, 54.644E,At anchor,2025-07-17
+81,WADI FERAN,/vessels/details/9460083,Cargo ship,2011,33234,57282,190,32,,"Jul 16, 07:58 UTC (1 day ago)",Bangladesh,Chattogram Anch.,"Jul 16, 23:00",Bangladesh,Mongla,22.4998N, 89.5883E,-,2025-07-17
+82,WADI ALBOSTAN,/vessels/details/9460722,Cargo ship,2011,33234,57320,190,32,,"Jul 5, 19:09 UTC (12 days ago)",Singapore,Singapore Anch. 4,"Jul 16, 00:00",India,Hazira,21.0666N, 72.6159E,-,2025-07-17
+83,SAFEEN PRESTIGE,/vessels/details/9593517,Cargo ship,2013,18252,23425,175,27,,"Jul 15, 12:12 UTC (2 days ago)",Libya,Misurata,"Jul 18, 12:00
+(in 20 hours)",,EGPSE,-,-,Under way,2025-07-17
+84,CAPT.KATTELMANN,/vessels/details/9330915,Cargo ship,2006,15995,20305,170,25,,"Jul 16, 07:30 UTC (1 day ago)",Turkey,Nemrut,"Jul 17, 12:00",Turkey,Yarimca,40.7715N, 29.7132E,Under way,2025-07-17
+85,EGY CROWN,/vessels/details/9216107,Cargo ship,2000,14241,18425,159,24,,"Jul 7, 11:05 UTC (10 days ago)",Bulgaria,Varna,"Jul 7, 11:20 UTC
+ARRIVED",Bulgaria,Varna,43.1902N, 27.939E,Moored,2025-07-17
+86,EGY FUTURE,/vessels/details/9127538,Cargo ship,1998,13977,18425,159,24,,"Mar 7, 01:56 UTC (133 days ago)",Egypt,Alexandria,-,,Destination not available,-,-,-,2025-07-17
+87,AL HURREYA,/vessels/details/9266487,Cargo ship,2005,13529,5904,140,24,,"Jul 8, 08:38 UTC (9 days ago)",Egypt,Safaga,"Jul 7, 13:00",,SUEZ-SAFAGA,-,-,Moored,2025-07-17
+88,AL HURREYA 2,/vessels/details/9309136,Cargo ship,2007,13529,5904,140,24,,"Jul 17, 11:00 UTC (5 hours ago)",Saudi Arabia,Duuba,"Jul 17, 13:32",,NEOM,-,-,Moored,2025-07-17
+89,ELREEDY STAR,/vessels/details/9161182,Cargo ship,1998,13066,20537,153,24,,"Jul 13, 15:22 UTC (4 days ago)",Djibouti,Djibouti,"Jul 14, 09:00",Yemen,Aden,12.7735N, 44.9496E,-,2025-07-17
+90,PAN GG,/vessels/details/9236286,Cargo ship,2002,10308,12562,149,23,,"Jul 17, 04:49 UTC (11 hours ago)",Egypt,Dumyat (Damietta),"Jul 17, 10:00 UTC
+ARRIVED",Egypt,Port Said,31.2644N, 32.3346E,Moored,2025-07-17
+91,EGY SKY,/vessels/details/9366483,Cargo ship (HAZ-A),2007,10308,12720,149,23,,"Jul 16, 07:56 UTC (1 day ago)",Egypt,Dumyat (Damietta),"Jul 16, 21:08 UTC
+ARRIVED",Egypt,Alexandria,31.166N, 29.8385E,Moored,2025-07-17
+92,LOTUS,/vessels/details/9193525,Cargo ship,1999,8443,9389,136,20,,"Jul 17, 11:55 UTC (4 hours ago)",Egypt,Alexandria,"Jul 15, 00:30",Egypt,El Dekheila,31.1502N, 29.8059E,Moored,2025-07-17
+93,BRIDGE,/vessels/details/8708622,Cargo ship,1989,7363,4683,122,20,,"Jul 14, 04:01 UTC (3 days ago)",Saudi Arabia,Jeddah Anchorage,"Jul 8, 09:45",,JEDDAH<>SAWAKIN,-,-,At anchor,2025-07-17
+94,AL SHAYMAA,/vessels/details/7612400,-,1981,5744,8207,128,18,,-,-,-,-,-,-,-,-,-,2025-07-17
+95,MERSA ALAM,/vessels/details/9055175,-,2000,4414,6016,101,18,,-,-,-,-,-,-,-,-,-,2025-07-17
+96,EL AABED,/vessels/details/7325643,-,1973,1981,3068,80,14,,-,-,-,-,-,-,-,-,-,2025-07-17
+97,SHOROK 4,/vessels/details/9593610,-,2012,200,294,30.00,-,,-,-,-,-,-,-,-,-,-,2025-07-17
+98,RAS EL KHAIMA,/vessels/details/7023958,-,1970,499,1046,76,13,,-,-,-,-,-,-,-,-,-,2025-07-17
+99,EL HURREYA 3,/vessels/details/9500390,-,2024,20437,11350,174,26,,-,-,-,-,-,-,-,-,-,2025-07-17
+100,ELMALEK KHALED,/vessels/details/7010171,-,1970,499,1046,76,13,,-,-,-,-,-,-,-,-,-,2025-07-17
+101,HAI BAO,/vessels/details/622666018,-,-,-,-,180,32,,-,-,-,-,-,-,-,-,-,2025-07-17
+102,SHUNLI096,/vessels/details/622442056,-,-,-,-,70,10,,-,-,-,-,-,-,-,-,-,2025-07-17
+103,SUEZ FLOWER,/vessels/details/7012507,-,1970,1179,1727,73,12,,-,-,-,-,-,-,-,-,-,2025-07-17
+104,SAKKR 2,/vessels/details/7910606,-,1981,100,20,24,5,,-,-,-,-,-,-,-,-,-,2025-07-17
+105,ZAHER,/vessels/details/622122260,-,-,-,-,15,27,,-,-,-,-,-,-,-,-,-,2025-07-17
+106,SHOROK 3,/vessels/details/9593608,-,2012,200,294,30.00,-,,-,-,-,-,-,-,-,-,-,2025-07-17
+107,SHOROK 1,/vessels/details/9593581,-,2012,200,294,30.00,-,,-,-,-,-,-,-,-,-,-,2025-07-17
+108,NOUR,/vessels/details/6913443,-,1969,110,161,32.82,-,,-,-,-,-,-,-,-,-,-,2025-07-17
+109,EL AABED,/vessels/details/7325643,-,1973,1981,3068,80,14,,-,-,-,-,-,-,-,-,-,2025-07-17
+110,SHOROK 1,/vessels/details/9593581,-,2012,200,294,30.00,-,,-,-,-,-,-,-,-,-,-,2025-07-17

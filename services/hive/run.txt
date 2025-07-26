@@ -1,0 +1,4 @@
+docker exec -it itvdelab bash -c "cp hive/hive-site.xml /opt/hive/conf/"
+docker exec -it itvdelab bash -c "hive --service hiveserver2 &> hive/hiveserver2.log"
+
+

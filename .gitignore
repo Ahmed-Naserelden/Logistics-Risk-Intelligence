@@ -10,5 +10,14 @@
 
 **sftp-data/
 
-services/extraction/data/vessels/
+# services/extraction/data/vessels/
+
+**.env
+
+**.log
+**data/
+
+*.ipynb_checkpoints
+
+services/spark/.env
 
