@@ -195,6 +195,8 @@ services:
       - bd-casestudy-nw
     depends_on:
       - "cluster_util_db"
+    env_file:
+      - ./services/spark/.env
 
   cluster_util_db:
     image: postgres:13

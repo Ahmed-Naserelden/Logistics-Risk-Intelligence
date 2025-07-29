@@ -188,4 +188,4 @@ snowfalke_query.awaitTermination()
 #     /opt/spark3/sbin/start-history-server.sh
 
 # 3. now you can run the spark-submit command:
-# /opt/spark3/bin/spark-submit --master local[2] --conf spark.ui.port=18181 --packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.1.2,net.snowflake:snowflake-jdbc:3.15.1,net.snowflake:spark-snowflake_2.12:2.10.0-spark_3.1 spark/streaming_2_snowflake.py
+# /opt/spark3/bin/spark-submit --master local[2] --conf spark.ui.port=18181 --packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.1.2,net.snowflake:snowflake-jdbc:3.15.1,net.snowflake:spark-snowflake_2.12:2.10.0-spark_3.1 spark/snowflake/streaming_2_snowflake.py

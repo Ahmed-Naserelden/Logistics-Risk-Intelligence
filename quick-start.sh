@@ -55,5 +55,9 @@ docker exec itvdelab nohup hive --service hiveserver2 &> services/hive/hiveserve
 # Feel free to test or add new queries in the questions.ipynb file
 # to answer the questions related to the data in gold layer
 
+
+
 docker exec -it itvdelab bash -c 'rm /home/itversity/batch_files_copied.log'
 docker exec -it itvdelab bash hdfs dfs -rm -r /home/itversity/bronze
+
+docker exec -it itvdelab bash -c "/opt/spark3/bin/spark-submit --master local[2] --conf spark.ui.port=18181 --packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.1.2,net.snowflake:snowflake-jdbc:3.15.1,net.snowflake:spark-snowflake_2.12:2.10.0-spark_3.1 spark/snowflake/streaming_2_snowflake.py  &> spark/snowflake/streaming_2_snowflake.log 2>&1 &"
